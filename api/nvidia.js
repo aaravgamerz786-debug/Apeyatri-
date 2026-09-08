@@ -11,7 +11,7 @@ export default async function handler(req,res){
     const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
-      body:JSON.stringify({model:'llama-3.1-8b-instant',messages,temperature:0.7,max_tokens:300})
+      body:JSON.stringify({model:'openai/gpt-oss-20b',messages,temperature:0.7,max_tokens:300})
     });
     if(!r.ok)return res.status(r.status).json({error:await r.text()});
     return res.status(200).json(await r.json());
