@@ -1733,7 +1733,7 @@ function sendAIMsg(){
   var ctx=aiHistory.slice(-6).map(function(h){return(h.role==='user'?'User':'AI')+': '+h.content;}).join('\n');
   var prompt=AI_SYSTEM+(ctx?'\n\nConversation:\n'+ctx:'')+'User: '+msg+'\nYatri AI:';
   aiHistory.push({role:'user',content:msg});
-  fetch('https://apeyatri-portal-aaravgamerz786-6046s-projects.vercel.app/api/nvidia',{
+  fetch('/api/nvidia',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
